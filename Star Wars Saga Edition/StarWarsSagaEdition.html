@@ -55,8 +55,8 @@
 				<tr>
 					<td class="col1">STR<br><div class="small">Strength</div></td>
 					<td><input type="number" name="attr_STR" value="8" title="Strength Score @{STR}" /></td>
-					<td><input type="number" name="attr_Str_max" value="[[floor(@{STR}/2-5)]]" disabled="true" title="Strength Modifier @{STR|max}" /></td>
-					<td><button type="roll" name="roll_STRCheck" value="&{template:skill} {{name=Strength}} {{skill=[[1d20+@{Str|max}[STR]+@{CT}[CT]]]}}" title="Roll Strength %{STRCheck}"></button></td>
+					<td><input type="number" name="attr_STR_max" value="[[floor(@{STR}/2-5)]]" disabled="true" title="Strength Modifier @{STR|max}" /></td>
+					<td><button type="roll" name="roll_STRCheck" value="&{template:skill} {{name=Strength}} {{skill=[[1d20+@{STR|max}[STR]+@{CT}[CT]]]}}" title="Roll Strength %{STRCheck}"></button></td>
 				</tr>
 				<tr>
 					<td class="col1">DEX<br><div class="small">Dexterity</div></td>
@@ -74,19 +74,19 @@
 					<td class="col1">INT<br><div class="small">Intelligence</div></td>
 					<td><input type="number" name="attr_INT" value="8" title="Intelligence Score @{INT}" /></td>
 					<td><input type="number" name="attr_INT_max" value="[[floor(@{INT}/2-5)]]" disabled="true" title="Intelligence Modifier @{INT|max}}" /></td>
-					<td><button type="roll" name="roll_INTCheck" value="&{template:skill} {{name=Intelligence}} {{skill=[[ 1d20+@{Int|max}[INT]+@{CT}[CT]]]}}" title="Roll Intelligence %{INTCheck}"></button></td>
+					<td><button type="roll" name="roll_INTCheck" value="&{template:skill} {{name=Intelligence}} {{skill=[[ 1d20+@{INT|max}[INT]+@{CT}[CT]]]}}" title="Roll Intelligence %{INTCheck}"></button></td>
 				</tr>
 				<tr>
 					<td class="col1">WIS<br><div class="small">Wisdom</div></td>
 					<td><input type="number" name="attr_WIS" value="8" title="Wisdom Score" /></td>
 					<td><input type="number" name="attr_WIS_max" value="[[floor(@{WIS}/2-5)]]" disabled="true" title="Wisdom Modifier" /></td>
-					<td><button type="roll" name="roll_WISCheck" value="&{template:skill} {{name=Wisdom}} {{skill=[[ 1d20+@{Wis|max}[WIS]+@{CT}[CT]]]}}" title="Roll Wisdom %{WISCheck}"></button></td>
+					<td><button type="roll" name="roll_WISCheck" value="&{template:skill} {{name=Wisdom}} {{skill=[[ 1d20+@{WIS|max}[WIS]+@{CT}[CT]]]}}" title="Roll Wisdom %{WISCheck}"></button></td>
 				</tr>
 				<tr>
 					<td class="col1">CHA<br><div class="small">Charisma</div></td>
 					<td><input type="number" name="attr_CHA" value="8" title="Charisma Score @{CHA}" /></td>
 					<td><input type="number" name="attr_CHA_max" value="[[floor(@{CHA}/2-5)]]" disabled="true" title="Charisma Modifier @{CHA|max}" /></td>
-					<td><button type="roll" name="roll_CHACheck" value="&{template:skill} {{name=Charisma}} {{skill=[[ 1d20+@{Cha|max}[CHA]+@{CT}[CT]]]}}" title="Roll Charisma %{CHACheck}"></button></td>
+					<td><button type="roll" name="roll_CHACheck" value="&{template:skill} {{name=Charisma}} {{skill=[[ 1d20+@{CHA|max}[CHA]+@{CT}[CT]]]}}" title="Roll Charisma %{CHACheck}"></button></td>
 				</tr>
 			</table>		
 		</div>
@@ -382,7 +382,7 @@
 							<span class="table-data" style="min-width:44px">		</span> 
 							<span class="table-data atkFormula">
 								<span class="small"><b>Attack Modifier Total Formula</b></span>	<br />
-								<textarea type="text" name="attr_AttackTotal" class="atkFormula" title="Attack Total formula @{repeating_attack_X_AttackTotal}" >@{BAB}[BAB] + @{attackMod}[Mod] + @{attackModMisc}[Misc] +@{CT}[CT] </textarea> 							
+								<textarea type="text" name="attr_AttackTotal" class="atkFormula" title="Attack Total formula @{repeating_attack_X_AttackTotal}" >@{BAB}[BAB] + @{attackMod}[Mod] + @{attackModMisc}[Misc] +@{CT}[CT] +@{ArmorType|max}[Armor Penalty] </textarea> 							
 								<span class="small"><b>Attack Roll Formula</b></span>	<br />
 								<textarea type="text" name="attr_WeaponAttack" class="atkFormula" title="Attack formula @{repeating_attack_X_WeaponAttack}" >1d20cs>@{WeaponCrit}[Critical Range] + @{attackTotal} + ?{Other Modifiers (Attack)|0}[Other]</textarea> 
 							</span>
@@ -509,7 +509,7 @@
 							<span class="table-data" style="min-width:50px">	</span>
 							<span class="table-data skillFormula">
 								<span class="small"><b>Skill Modifier Total Formula</b></span>	<br />
-								<input type="text" name="attr_AcrobaticsFormula" class="skillFormula" title="Skill Total formula @{AcrobaticsFormula}" value="@{level|max}[Half Level]+@{AcrobaticsMod}[Mod]+@{AcrobaticsFeat}[Training]+@{AcrobaticsFeat|max}[Focus]+@{AcrobaticsMisc}[Misc]+@{CT}[CT]" /> 							
+								<input type="text" name="attr_AcrobaticsFormula" class="skillFormula" title="Skill Total formula @{AcrobaticsFormula}" value="@{level|max}[Half Level]+@{AcrobaticsMod}[Mod]+@{AcrobaticsFeat}[Training]+@{AcrobaticsFeat|max}[Focus]+@{ArmorType|max}[Armor Penalty]+@{AcrobaticsMisc}[Misc]+@{CT}[CT]" /> 							
 								<span class="small"><b>Template Formula</b></span>	<br />
 								<input type="text" name="attr_AcrobaticsFormula_max" class="skillFormula" title="Skill Template formula @{AcrobaticsFormula|max}" value="&{template:skill} {{name=Acrobatics}} {{skill=[[1d20 + @{Acrobatics} + ?{Other Modifiers|0}[Other]]]}} {{notes=@{Acrobatics|max}}}" />
 							</span>
@@ -552,7 +552,7 @@
 							<span class="table-data" style="min-width:50px">	</span>
 							<span class="table-data skillFormula">							
 								<span class="small"><b>Skill Modifier Total Formula</b></span>	<br />
-								<input type="text" name="attr_ClimbFormula" class="skillFormula" title="Skill Total formula @{ClimbFormula}" value="@{level|max}[Half Level]+@{ClimbMod}[Mod]+@{ClimbFeat}[Training]+@{ClimbFeat|max}[Focus]+@{ClimbMisc}[Misc]+@{CT}[CT]" /> 
+								<input type="text" name="attr_ClimbFormula" class="skillFormula" title="Skill Total formula @{ClimbFormula}" value="@{level|max}[Half Level]+@{ClimbMod}[Mod]+@{ClimbFeat}[Training]+@{ClimbFeat|max}[Focus]+@{ArmorType|max}[Armor Penalty]+@{ClimbMisc}[Misc]+@{CT}[CT]" /> 
 								<span class="small"><b>Template Formula</b></span>	<br />
 								<input type="text" name="attr_ClimbFormula_max" class="skillFormula" title="Skill Template formula @{ClimbFormula|max}" value="&{template:skill} {{name=Climb}} {{skill=[[1d20 + @{Climb} + ?{Other Modifiers|0}[Other]]]}} {{notes=@{Climb|max}}}" />
 							</span>
@@ -638,7 +638,7 @@
 							<span class="table-data" style="min-width:50px">	</span>
 							<span class="table-data skillFormula">
 								<span class="small"><b>Skill Modifier Total Formula</b></span>	<br />
-								<input type="text" name="attr_EnduranceFormula" class="skillFormula" title="Skill Total formula @{EnduranceFormula}" value="@{level|max}[Half Level]+@{EnduranceMod}[Mod]+@{EnduranceFeat}[Training]+@{EnduranceFeat|max}[Focus]+@{EnduranceMisc}[Misc]+@{CT}[CT]" /> 
+								<input type="text" name="attr_EnduranceFormula" class="skillFormula" title="Skill Total formula @{EnduranceFormula}" value="@{level|max}[Half Level]+@{EnduranceMod}[Mod]+@{EnduranceFeat}[Training]+@{EnduranceFeat|max}[Focus]+@{ArmorType|max}[Armor Penalty]+@{EnduranceMisc}[Misc]+@{CT}[CT]" /> 
 								<span class="small"><b>Template Formula</b></span>	<br />	
 								<input type="text" name="attr_EnduranceFormula_max" class="skillFormula" title="Skill Template formula @{EnduranceFormula|max}" value="&{template:skill} {{name=Endurance}} {{skill=[[1d20 + @{Endurance} + ?{Other Modifiers|0}[Other]]]}} {{notes=@{Endurance|max}}}" />
 							</span>
@@ -724,7 +724,7 @@
 							<span class="table-data" style="min-width:50px">	</span>
 							<span class="table-data skillFormula">	
 								<span class="small"><b>Skill Modifier Total Formula</b></span>	<br />
-								<input type="text" name="attr_InitiativeFormula" class="skillFormula" title="Skill Total formula @{InitiativeFormula}" value="@{level|max}[Half Level]+@{InitiativeMod}[Mod]+@{InitiativeFeat}[Training]+@{InitiativeFeat|max}[Focus]+@{InitiativeMisc}[Misc]+@{CT}[CT]" /> 							
+								<input type="text" name="attr_InitiativeFormula" class="skillFormula" title="Skill Total formula @{InitiativeFormula}" value="@{level|max}[Half Level]+@{InitiativeMod}[Mod]+@{InitiativeFeat}[Training]+@{InitiativeFeat|max}[Focus]+@{ArmorType|max}[Armor Penalty]+@{InitiativeMisc}[Misc]+@{CT}[CT]" /> 							
 								<span class="small"><b>Template Formula</b></span>	<br />
 								<input type="text" name="attr_InitiativeFormula_max" class="skillFormula" title="Skill Template formula @{InitiativeFormula|max}" value="&{template:skill} {{name=Initiative}} {{skill=[[1d20 + @{Initiative} + ?{Other Modifiers|0}[Other]]]}} {{notes=@{Initiative|max}}}" />
 							</span>
@@ -767,7 +767,7 @@
 							<span class="table-data" style="min-width:50px">	</span>
 							<span class="table-data skillFormula">
 								<span class="small"><b>Skill Modifier Total Formula</b></span>	<br />
-								<input type="text" name="attr_JumpFormula" class="skillFormula" title="Skill Total formula @{JumpFormula}" value="@{level|max}[Half Level]+@{JumpMod}[Mod]+@{JumpFeat}[Training]+@{JumpFeat|max}[Focus]+@{JumpMisc}[Misc]+@{CT}[CT]" />				
+								<input type="text" name="attr_JumpFormula" class="skillFormula" title="Skill Total formula @{JumpFormula}" value="@{level|max}[Half Level]+@{JumpMod}[Mod]+@{JumpFeat}[Training]+@{JumpFeat|max}[Focus]+@{ArmorType|max}[Armor Penalty]+@{JumpMisc}[Misc]+@{CT}[CT]" />				
 								<span class="small"><b>Template Formula</b></span>	<br />
 								<input type="text" name="attr_JumpFormula_max" class="skillFormula" title="Skill Template formula @{JumpFormula|max}" value="&{template:skill} {{name=Jump}} {{skill=[[1d20 + @{Jump} + ?{Other Modifiers|0}[Other]]]}} {{notes=@{Jump|max}}}" />
 							</span>
@@ -1336,7 +1336,7 @@
 							<span class="table-data" style="min-width:50px">	</span>
 							<span class="table-data skillFormula">							
 								<span class="small"><b>Skill Modifier Total Formula</b></span>	<br />
-								<input type="text" name="attr_StealthFormula" class="skillFormula" title="Skill Total formula @{StealthFormula}" value="@{level|max}[Half Level]+@{StealthMod}[Mod]+@{StealthFeat}[Training]+@{StealthFeat|max}[Focus]+@{StealthSize}[Size]+@{StealthMisc}[Misc]+@{CT}[CT]" /> 
+								<input type="text" name="attr_StealthFormula" class="skillFormula" title="Skill Total formula @{StealthFormula}" value="@{level|max}[Half Level]+@{StealthMod}[Mod]+@{StealthFeat}[Training]+@{StealthFeat|max}[Focus]+@{StealthSize}[Size]+@{ArmorType|max}[Armor Penalty]+@{StealthMisc}[Misc]+@{CT}[CT]" /> 
 								<span class="small"><b>Template Formula</b></span>	<br />
 								<input type="text" name="attr_StealthFormula_max" class="skillFormula" title="Skill Template formula @{StealthFormula|max}" value="&{template:skill} {{name=Stealth}} {{skill=[[1d20 + @{Stealth} + ?{Other Modifiers|0}[Other]]]}} {{notes=@{Stealth|max}}}" />
 							</span>
@@ -1422,7 +1422,7 @@
 							<span class="table-data" style="min-width:50px">	</span>
 							<span class="table-data skillFormula">							
 								<span class="small"><b>Skill Modifier Total Formula</b></span>	<br />
-								<input type="text" name="attr_SwimFormula" class="skillFormula" title="Skill Total formula @{SwimFormula}" value="@{level|max}[Half Level]+@{SwimMod}[Mod]+@{SwimFeat}[Training]+@{SwimFeat|max}[Focus]+@{SwimMisc}[Misc]+@{CT}[CT]" /> 
+								<input type="text" name="attr_SwimFormula" class="skillFormula" title="Skill Total formula @{SwimFormula}" value="@{level|max}[Half Level]+@{SwimMod}[Mod]+@{SwimFeat}[Training]+@{SwimFeat|max}[Focus]+@{ArmorType|max}[Armor Penalty]+@{SwimMisc}[Misc]+@{CT}[CT]" /> 
 								<span class="small"><b>Template Formula</b></span>	<br />						
 								<input type="text" name="attr_SwimFormula_max" class="skillFormula" title="Skill Template formula @{SwimFormula|max}" value="&{template:skill} {{name=Swim}} {{skill=[[1d20 + @{Swim} + ?{Other Modifiers|0}[Other]]]}} {{notes=@{Swim|max}}}" />
 							</span>
@@ -3108,9 +3108,15 @@ For Help, please see the wiki page. <input type="text" name="attr_vehicle-Equipm
 
 <!-- WORKERS -->
 <script type="text/worker">
-
+on("change:level", function() {
+	ArmorUpdate();
+});
 on("change:size", function() {
 	SizeUpdate();
+});
+
+on("change:dex", function() {
+	ArmorUpdate();
 });
 
 //Changes to Armor
@@ -3138,6 +3144,9 @@ on("change:armorperception", function() {
 });
 on("change:ArmorDex", function() {
 	ArmorUpdate();
+});
+on("change:ArmorWt", function() {
+	
 });
 
 var ArmorPerception = function() {
@@ -3210,53 +3219,63 @@ on("change:repeating_equipment",function(){
 
 var ArmorUpdate = function() {
 	getAttrs(["ArmorWornCheck", "ArmorDefense", "ImpArmorDefense", "ArmorProf", "ArmorRef", "level", "ArmorType", "ArmorDex", "DEX", "RefMod"], function(v) {
-	/*
-	console.log("ArmorWornCheck = " + v["ArmorWornCheck"] + '\n' +  
+
+/*	console.log("ArmorWornCheck = " + v["ArmorWornCheck"] + '\n' +  
 				"ArmorDefense = " + v["ArmorDefense"]   + '\n' + 
 				"ImpArmorDefense = " + v["ImpArmorDefense"] + '\n' + 
 				"ArmorProf = " + v["ArmorProf"] + '\n' + 
-				"ArmorType = " + v["ArmorType"]);
-	*/
-	//Reflex Defense	
+				"ArmorType = " + v["ArmorType"]	);		*/
+
+	//Defenses	
+	ImpArmorDefense = parseInt(v["level"]) + Math.floor(parseInt(v["ArmorRef"]/ 2))
 	if (v["ArmorProf"] == "0") {setAttrs({"ArmorDefense": "0", "ImpArmorDefense": "0" });}
 	
-	if(v["ArmorWornCheck"] == "1" && v["ArmorProf"] == "1") {
-		if(v["ArmorDefense"] != "1" ) {
-			armorReflex = "@{ArmorRef}";
-			setAttrs({ "ImpArmorDefense": "0" });
+	if(v["ArmorWornCheck"] == "1") { //If Armor is being Worn
+		if(v["ArmorProf"] == "1") { //if Proficient
+			armorFortitude = "@{level}+@{ArmorFort}"
+			armorPenalty = "0";
+			if(v["ArmorDefense"] != "1" ) {
+				armorReflex = "@{ArmorRef}";
+				setAttrs({ "ImpArmorDefense": "0" });
+			}
+			else if(v["ArmorDefense"] == "1" && v["ImpArmorDefense"] != "1"){
+				console.log("==== Armored Defense ====");
+				if (v["ArmorRef"] > v["level"] ) {armorReflex = "@{ArmorRef}"; console.log("== Armor Ref (" + v["ArmorRef"] +") > level ("+ v["level"]+") ==");}
+				else {armorReflex = "@{level}"; console.log("== Level ("+ v["level"]+") >= Armor Ref (" + v["ArmorRef"] +") ==");}
+			}		
+			else if(v["ImpArmorDefense"] == "1") {
+				console.log("==== Improved Armored Defense ====");
+				if (ImpArmorDefense >= v["ArmorRef"]) {armorReflex = "@{level}+floor(@{ArmorRef}/2)"; console.log("== ImpArmorDefense (" + ImpArmorDefense +") > ArmorRef ("+ v["ArmorRef"]+") ==");}
+				else {armorReflex = "@{ArmorRef}"; console.log("== ImpArmorDefense (" + ImpArmorDefense +") < ArmorRef ("+ v["ArmorRef"]+") ==");}
+			}
+			else {armorReflex = "@{level}"}		
 		}
-		else if(v["ArmorDefense"] == "1" && v["ImpArmorDefense"] != "1"){
-			if(v["level"] == v["ArmorRef"]) {armorReflex = "@{level}"}
-			else if(v["level"] >= v["ArmorRef"]) {armorReflex = "@{level}"}
-			else {armorReflex = "@{ArmorRef}"}
-		}		
-		else if(v["ImpArmorDefense"] == "1") {armorReflex = "@{level}+floor(@{ArmorRef}/2)";}
-		else {armorReflex = "@{level}"}
-	}
-	else {armorReflex = "@{level}";}
-	
-	//Fortitude Defense
-	if(v["ArmorWornCheck"] == "1" && v["ArmorProf"] == "1") {armorFortitude = "@{level}+@{ArmorFort}"}
-	else {armorFortitude = "@{level}"}
-	
-	//Armor Penalty
-	if (v["ArmorWornCheck"] == "1" && v["ArmorProf"] != "1") {
-		switch (v["ArmorType"]) {
-		case "Light":
-			armorPenalty = "-2";
-			break;
-		case "Medium":
-			armorPenalty = "-5";
-			break;
-		case "Heavy":
-			armorPenalty = "-10";
-			break;
-		}		
-	}
-	else {armorPenalty = "0";}	
-	
-	console.log("armorReflex = " + armorReflex);	
-	console.log("armorFortitude = " + armorFortitude);
+		else {
+			console.log("==== Not Proficient in Armor ====");
+			armorReflex = "@{ArmorRef}";
+			armorFortitude = "@{level}";
+			//Armor Penalty
+			switch (v["ArmorType"]) {
+				case "Light":
+				default:
+					armorPenalty = "-2";
+					break;
+				case "Medium":
+					armorPenalty = "-5";
+					break;
+				case "Heavy":
+					armorPenalty = "-10";
+					break;
+			};			
+		}
+	} 
+	else {
+			console.log("==== Not Wearing Armor ====");
+			armorReflex = "@{level}";
+			armorFortitude = "@{level}"
+		}
+
+	console.log("armorReflex = " + armorReflex + '\n' + "armorFortitude = " + armorFortitude + '\narmorPenalty = ' + armorPenalty );
 		setAttrs({
 			"RefLevel_max": armorReflex,
 			"FortLevel_max": armorFortitude,
@@ -3265,15 +3284,19 @@ var ArmorUpdate = function() {
 	
 	//Determine which Dex mod to use
 	dexMod = Math.floor((parseInt(v["DEX"],10) - 10) / 2);
-	if(v["ArmorWornCheck"] == "1" && (v["RefMod"] == "@{dex|max}" || v["RefMod"] == "@{ArmorRef}") && v["ArmorDex"] >= dexMod) {
-		console.log("Sheet is using Dex for Reflex and Armor Dex is greater than or equal to Character's Dex");
-		setAttrs({"RefMod": "@{DEX|max}"});
+	console.log("==== Dex Mod for Defenses ====");
+	if(v["ArmorWornCheck"] == "1" && (v["RefMod"] == "@{dex|max}" || v["RefMod"] == "@{ArmorDex}") && v["ArmorDex"] >= dexMod) {
+		console.log("== Armor Dex ("+v["ArmorDex"]+") >= DexMod ("+dexMod+") ==" + '\n' + "RefMod = @{dex|max}");
+		setAttrs({"RefMod": "@{dex|max}"});
 	}
-	else if(v["ArmorWornCheck"] == "1" && (v["RefMod"] == "@{dex|max}" || v["RefMod"] == "@{ArmorRef}") && v["ArmorDex"] < dexMod) {
-		console.log("Sheet is using Dex for Reflex and Armor Dex is less than the Character's Dex");
+	else if(v["ArmorWornCheck"] == "1" && (v["RefMod"] == "@{dex|max}" || v["RefMod"] == "@{ArmorDex}") && v["ArmorDex"] < dexMod) {
+		console.log("== Armor Dex ("+v["ArmorDex"]+") < DexMod ("+dexMod+") ==" + '\n' + "RefMod = @{ArmorDex}");
 		setAttrs({"RefMod": "@{ArmorDex}"});
 	}
-	else {console.log("Either the character is not wearing armor, or their Reflex Mod is not Dex");}
+	else if(v["ArmorWornCheck"] != "1" && v["RefMod"] == "@{ArmorDex}") {console.log("RefMod = @{dex|max}");
+		setAttrs({"RefMod": "@{dex|max}"});
+	}
+	else{console.log("== NO OPTIONS ==" + '\n' + "dexmod = " +dexMod + '\n' + "ArmorDex = " +v["ArmorDex"] + "\nRefMod = " + v["RefMod"]);}
 	}); //End 
 };
 
@@ -3282,67 +3305,32 @@ var SizeUpdate = function() {
 	console.log("Size = " + v["Size"])
 		switch (v["Size"]){
 			case "Colossal":
-				RefSize = "-10";
-				StealthSize = "-20";
-				DTSize = "50";
-				CarrySize = "20";
-				Grapple = "20";
+				RefSize = "-10"; 	StealthSize = "-20";		DTSize = "50";		CarrySize = "20";		Grapple = "20";
 				break;
 			case "Gargantuan":
-				RefSize = "-5";
-				StealthSize = "-15";
-				DTSize = "20";
-				CarrySize = "10";
-				Grapple = "15";
+				RefSize = "-5";		StealthSize = "-15";		DTSize = "20";		CarrySize = "10";		Grapple = "15";
 				break;
 			case "Huge":
-				RefSize = "-2";
-				StealthSize = "-10";
-				DTSize = "10";
-				CarrySize = "5";
-				Grapple = "10";
+				RefSize = "-2"; 	StealthSize = "-10";		DTSize = "10";		CarrySize = "5";		Grapple = "10";
 				break;
 			case "Large":
-				RefSize = "-1";
-				StealthSize = "-5";
-				DTSize = "5";
-				CarrySize = "2";
-				Grapple = "5";
+				RefSize = "-1";		StealthSize = "-5";			DTSize = "5";		CarrySize = "2";		Grapple = "5";
 				break;
-			case "Medium":				
-				RefSize = "0";
-				StealthSize = "0";
-				DTSize = "0";
-				CarrySize = "1";
-				Grapple = "0";
+			case "Medium":
+			default:	
+				RefSize = "0";		StealthSize = "0"; 			DTSize = "0";		CarrySize = "1";		Grapple = "0";
 				break;
 			case "Small":
-				RefSize = "1";
-				StealthSize = "5";
-				DTSize = "0";
-				CarrySize = ".75";
-				Grapple = "-5";
+				RefSize = "1";		StealthSize = "5";			DTSize = "0";		CarrySize = ".75";		Grapple = "-5";
 				break;
 			case "Tiny":
-				RefSize = "2";
-				StealthSize = "10";
-				DTSize = "0";
-				CarrySize = ".5";
-				Grapple = "-10";
+				RefSize = "2";		StealthSize = "10";			DTSize = "0";		CarrySize = ".5";		Grapple = "-10";
 				break;
 			case "Diminutive":
-				RefSize = "5";
-				StealthSize = "15";
-				DTSize = "0";
-				CarrySize = ".25";
-				Grapple = "-15";
+				RefSize = "5";		StealthSize = "15";			DTSize = "0";		CarrySize = ".25";		Grapple = "-15";
 				break;		
 			case "Fine":
-				RefSize = "10";
-				StealthSize = "20";
-				DTSize = "0";
-				CarrySize = ".01";
-				Grapple = "-20";
+				RefSize = "10";		StealthSize = "20";			DTSize = "0";		CarrySize = ".01";		Grapple = "-20";
 				break;
 		};
 		
