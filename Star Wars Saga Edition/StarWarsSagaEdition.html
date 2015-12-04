@@ -301,24 +301,31 @@
 			<br />			
 			<input type="checkbox" class="sect-show hidden" value="1" name="attr_armor-show" /> 		
 			<table class="spacing sect table2col">
-				<tr colspan="6"><div class="textHead2Col">Armor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" class="sect-show" title="Show/Hide Armor Section" name="attr_armor-show" value="1" style="opacity:0;width: 35px;height: 16px;position: relative;top: 5px;left: 6px;margin: -32px;cursor: pointer;z-index: 1;" /><span></span></div></tr>
-				<tr>	<th width="50%" colspan="2">Armor Worn <input type="checkbox" value="1" name="attr_ArmorWornCheck" title="Armor equiped @{ArmorWornCheck}" /></th>		<th class="small">Ref Def<br />Bonus</th>		<th class="small">Fort Def<br />Bonus</th>		<th class="small">Max Dex<br />Bonus</th>		<th>Speed</th>		</tr>
+				<tr colspan="7">	<div class="textHead2Col">Armor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" class="sect-show" title="Show/Hide Armor Section" name="attr_armor-show" value="1" style="opacity:0;width: 35px;height: 16px;position: relative;top: 5px;left: 6px;margin: -32px;cursor: pointer;z-index: 1;" /><span></span></div></tr>
+				<tr>	
+					<th width="50%" colspan="3">Armor Worn <input type="checkbox" value="1" name="attr_ArmorWornCheck" title="Armor equiped @{ArmorWornCheck}" /></th>		
+					<th class="small">Ref Def<br />Bonus</th>		
+					<th class="small">Fort Def<br />Bonus</th>		
+					<th class="small">Max Dex<br />Bonus</th>		
+					<th>Speed</th>		</tr>
 				<tr>
-					<td colspan="2"><input type="text" name="attr_ArmorWorn" style="width:100%" title="Armor Name @{ArmorWorn}" /></td>
+					<td colspan="3"><input type="text" name="attr_ArmorWorn" style="width:100%" title="Armor Name @{ArmorWorn}" /></td>
 					<td><input type="number" name="attr_ArmorRef" value="0"  title="Armor Reflex Defense Bonus @{ArmorRef}" /></td>
 					<td><input type="number" name="attr_ArmorFort" value="0" title="Armor Fortitude Defense Bonus @{ArmorFort}"  /></td>
 					<td><input type="number" name="attr_ArmorDex" value="0"  title="Armor Max DEX @{ArmorDex}" /></td>
 					<td><input type="number" name="attr_Speed_max" value="0" title="Armor Max Speed @{Speed|max}"  /></td>
 				</tr>
 				<tr>
-					<th class="small">Armor Type<br/>
+					<th class="small">Proficiency<br /><input type="checkbox" value="1" name="attr_ArmorProf" title="Proficient in armor worn @{ArmorProf}" /></th>
+					<th class="small">Armor Def.<br /><input type="checkbox" value="1" name="attr_ArmorDefense" title="Armor Specialist: Armor Defense @{ArmorDefense}" /></th>				
+					<th class="small">Improved<br />Armor Def.<br /><input type="checkbox" value="1" name="attr_ImpArmorDefense" title="Armor Specialist: Improved Armor Defense @{ArmorDefense}" /></th>
+					<th class="small" colspan="2">Armor Type<br/>
 						<select name="attr_ArmorType" style="width:90px" title="Armor Type @{ArmorType}">           
 							  <option value="Light">Light</option>
 							  <option value="Medium">Medium</option>
 							  <option value="Heavy">Heavy</option>
 						</select>
 						<input type="number" name="attr_ArmorType_max" value="0" class="hidden" title="Armor Penalty @{ArmorType|max}"  /> </th>
-					<th class="small">Weight<br/><input type="text" name="attr_ArmorWt" style="width:50px" value="0" title="Armor Weight @{ArmorWt}"  /></th>
 					<th class="small" colspan="2">Helmet Package<br/>
 						<select name="attr_ArmorPerception" style="width:90px" title="Helmet Package Perception bonus @{ArmorPerception}">           
 						  <option value="None" selected>None</option>
@@ -327,12 +334,10 @@
 					</select></th>
 				</tr>	
 				<tr>	
-					<th class="small">Proficiency<br /><input type="checkbox" value="1" name="attr_ArmorProf" title="Proficient in armor worn @{ArmorProf}" /></th>
-					<th class="small">Armor Defense<br /><input type="checkbox" value="1" name="attr_ArmorDefense" title="Armor Specialist: Armor Defense @{ArmorDefense}" /></th>				
-					<th class="small" colspan="2">Improved<br />Armor Defense<br /><input type="checkbox" value="1" name="attr_ImpArmorDefense" title="Armor Specialist: Improved Armor Defense @{ArmorDefense}" /></th>
+					
 				</tr>
 				<tr>		
-					<td colspan="5"><textarea type="text" name="attr_ArmorNotes" class="atkNotes" title="Armor Notes @{ArmorNotes}"  placeholder="Armor Notes"></textarea></td>
+					<td colspan="7"><textarea type="text" name="attr_ArmorNotes" class="atkNotes" title="Armor Notes @{ArmorNotes}"  placeholder="Armor Notes"></textarea></td>
 				</tr>
 			</table>
 			<br />			
@@ -1582,33 +1587,45 @@
 	<div class="2colrow">
 		<div class="col">
 			<div class="textHead2Col">Equipment</div>
-			<table>	
-				<tr>
-					<th width="220px">Item</th>
-					<th>Location</th>
-					<th>Wt</th>
-				</tr>
-				<tr>	<td colspan="3">			
-				<fieldset class="repeating_equipment">
-					<table>			
-						<tr border="1">	
-							<td width="220px"><input type="text" name="attr_EquipmentItem" placeholder="Item Name" title="Item Name" /></td>	
-							<td><input type="text" name="attr_EquipmentLocation" placeholder="Location" style="width:125px" title="Item's stored location" /></td>	
-							<td><input type="text" style="width:50px" name="attr_EquipmentWt" value="0" title="Item's Weight" /></td>
-						</tr>
-					</table>
-				</fieldset>
-				</td>	</tr>		
-					<tr>	<td class="col1" width="150px">Total Equipment Wt </td>	
-						<td>    <input type="text" name="attr_EquipmentWt" value="0" style="width:42%" title="Total Equipment Weight" />    
-								&nbsp;/&nbsp;	
-								<input type="number" name="attr_EquipmentCapacity" value="(@{Str}/2)*(@{Str}/2)" disabled="true" style="width:42%" title="Equipment Weight Capacity" />
-						</td>
-					</tr>
-					<tr>	<td class="col1">Carrying Capacity</td>	
-						<td><input type="number" name="attr_CarryingCapacity" value="@{Str}*@{Str}/2*@{CarryingCapacitySize}" disabled="true" style="width:100%" title="Carrying Capacity (Lift)" />	<input type="number" value="1" name="attr_CarryingCapacitySize" class="hidden" />	</td>
-					</tr>
-			</table>	
+			<div class="table">
+				<div class="table-row">
+					<span class="table-header" style="min-width:175px; width:60%">Item Name</span>
+					<span class="table-header" style="min-width:125px; width:40%;">Location</span>
+					<span class="table-header" style="width:46px;">Carry</span>
+					<span class="table-header" style="width:60px;">Weight</span>					
+				</div>			
+				<div class="table-row">
+					<span class="table-data">	<input type="text" name="attr_ArmorWorn" placeholder="Armor Name" style="width:100%" title="Armor Name @{ArmorWorn}" />	</span>
+					<span class="table-data">	<input type="text" name="attr_ArmorLocation" placeholder="Location"  style="width:100%;" title="Armor stored location @{ArmorLocation}" />	</span>
+					<span class="table-data center" style="width:46px; float:left">	<input type="checkbox" value="1" name="attr_ArmorCarry" title="Armor Carried? @{ArmorCarry}" />	</span>
+					<span class="table-data center">	<input type="text" style="width:55px" name="attr_ArmorWt" value="0" title="Armor Weight @{ArmorWt}" />	</span>					
+				</div>
+			</div>
+			<fieldset class="repeating_equipment">
+			<div class="table">	
+				<div class="table-row">
+					<span class="table-data" style="min-width:175px; width:60%">	<input type="text" name="attr_EquipmentItem" style="width:100%" placeholder="Item Name" title="Item Name @{repeating_equipment_#_EquipmentItem}" />	</span>
+					<span class="table-data" style="min-width:125px; width:40%">	<input type="text" name="attr_EquipmentLocation" placeholder="Location" style="width:100%;" title="Item's stored location @{repeating_equipment_#_EquipmentLocation}" />	</span>
+					<span class="table-data center" style="width:46px; float:left">	<input type="checkbox" value="1" name="attr_EquipmentCarry" title="Item Carried? @{repeating_equipment_#_EquipmentCarry}" />	</span>
+					<span class="table-data center" style="width:60px">	<input type="text" style="width:55px" name="attr_EquipmentWt" value="0" title="Item's Weight @{repeating_equipment_#_EquipmentWt}" />	</span>
+				</div>
+			</div>	
+			</fieldset>			<input type="number" value="0" name="attr_EquipmentRunningTotal" class="hidden" />
+			<div class="table">	
+				<div class="table-row">
+					<span class="table-data col1" style="width:150px">	Total Equipment Wt	</span>					
+					<span class="table-data center">
+						<input type="text" name="attr_TotalWt" value="0" style="width:42%" title="Total Equipment Weight @{TotalWt}" />    
+						&nbsp;/&nbsp;	
+						<input type="number" name="attr_EquipmentCapacity" value="(@{Str}/2)*(@{Str}/2)" disabled="true" style="width:42%" title="Equipment Weight Capacity @{EquipmentCapacity}" />		
+					</span>					
+					<span class="table-header center" style="width:72px">	Heavy Load	<br/>	<input type="checkbox" value="-10" name="attr_EquipmentLoad" title="Equipment Load Penalty @{EquipmentLoad}" /></span>
+				</div>	
+				<div class="table-row">
+					<span class="table-data col1" style="width:150px">	Carrying Capacity (lift)	</span>					
+					<span class="table-data">	<input type="number" name="attr_CarryingCapacity" value="@{Str}*@{Str}/2*@{CarryingCapacitySize}" disabled="true" style="width:100%" title="Carrying Capacity (Lift) @{CarryingCapacity}" />	<input type="number" value="1" name="attr_CarryingCapacitySize" class="hidden" />	</span>					
+				</div>
+			</div>
 		</div>
 		<div class="col">
 			<table>
@@ -2498,7 +2515,7 @@
 		  </tbody>
 		</table>		
 		<br />
-		<div class="textHead">Attacks</div>
+		<div class="textHead">Weapons</div>
 			<fieldset class="repeating_attack">	
 				<table class="spacing">
 					<tr>
@@ -2717,7 +2734,7 @@
 <!-- start help section --> 
 <div> 
 For Help, please see the wiki page. <input type="text" name="attr_vehicle-EquipmentLocation" style="width:30em" title="Wiki URL" value="https://wiki.roll20.net/Star_Wars_Saga_Edition_Character_Sheet"/> <br/>
-<b>Last updated</b> 09/24/2015
+<b>Last updated</b> 12/04/2015
 </div>
 
 <!-- start roll templates --> 
@@ -3109,6 +3126,340 @@ For Help, please see the wiki page. <input type="text" name="attr_vehicle-Equipm
 
 <!-- WORKERS -->
 <script type="text/worker">
+/* ---- BEGIN: TheAaronSheet.js ---- */
+// Github:   https://github.com/shdwjk/TheAaronSheet/blob/master/TheAaronSheet.js
+// By:       The Aaron, Arcane Scriptomancer
+// Contact:  https://app.roll20.net/users/104025/the-aaron
+
+var TAS = TAS || (function(){
+    'use strict';
+
+    var version = '0.2.0',
+        lastUpdate = 1448523710,
+
+		queuedUpdates = {}, //< Used for delaying saves till the last momment.
+
+	log = function(){
+        _.each(arguments,function(m){
+            switch(typeof m){
+                case 'string':
+                    console.log('<TAS> :: '+m);
+                    break;
+                case 'number':
+                    console.log('<TAS> :: [number]: '+m);
+                    break;
+                default:
+                    console.log('<TAS> :: ['+typeof m +']:');
+                    console.log(m);
+                    console.log('<TAS> :: =========================================================');
+            }
+        });
+	},
+
+    prepareUpdate = function( attribute, value ){
+        queuedUpdates[attribute]=value;
+    },
+
+    applyQueuedUpdates = function() {
+      setAttrs(queuedUpdates);
+      queuedUpdates = {};
+    },
+
+	namesFromArgs = function(args,base){
+        return _.chain(args)
+            .reduce(function(memo,attr){
+                if('string' === typeof attr) {
+                    memo.push(attr);
+                } else if(_.isArray(args) || _.isArguments(args)){
+                    memo = namesFromArgs(attr,memo);
+                }
+                return memo;
+            },(_.isArray(base) && base) || [])
+            .uniq()
+            .value();
+	},
+
+	addId = function(obj,value){
+		Object.defineProperty(obj,'id',{
+			value: value,
+			writeable: false,
+			enumerable: false
+		});
+	},
+
+	addProp = function(obj,prop,value,fullname){
+		(function(){
+            var pname=(_.contains(['S','F','I','D'],prop) ? '_'+prop : prop),
+			    full_pname = fullname || prop,
+                pvalue=value;
+
+            _.each(['S','I','F'],function(p){
+                if( !_.has(obj,p)){
+                    Object.defineProperty(obj, p, {
+                        value: {},
+                        enumerable: false,
+                        readonly: true
+                    });
+                }
+            });
+            if( !_.has(obj,'D')){
+                Object.defineProperty(obj, 'D', {
+                    value: _.reduce(_.range(10),function(m,d){
+                            Object.defineProperty(m, d, {
+                                value: {},
+                                enumerable: true,
+                                readonly: true
+                            });
+                            return m;
+                        },{}),
+                    enumerable: false,
+                    readonly: true
+                });
+            }
+
+
+            // Raw value
+			Object.defineProperty(obj, pname, {
+                enumerable: true,
+				set: function(v){
+					pvalue=v;
+                    prepareUpdate(full_pname,v);
+				},
+				get: function(){
+					return pvalue;
+				}
+			});
+            
+            // string value
+			Object.defineProperty(obj.S, pname, {
+                enumerable: true,
+				set: function(v){
+                    var val=v.toString();
+					pvalue=val;
+                    prepareUpdate(full_pname,val);
+				},
+				get: function(){
+					return pvalue.toString();
+				}
+			});
+
+            // int value
+			Object.defineProperty(obj.I, pname, {
+                enumerable: true,
+				set: function(v){
+                    var val=parseInt(v,10) || 0;
+					pvalue=val;
+                    prepareUpdate(full_pname,val);
+				},
+				get: function(){
+					return parseInt(pvalue,10) || 0;
+				}
+			});
+
+            // float value
+			Object.defineProperty(obj.F, pname, {
+                enumerable: true,
+				set: function(v){
+                    var val=parseFloat(v) || 0;
+					pvalue=val;
+                    prepareUpdate(full_pname,val);
+				},
+				get: function(){
+					return parseFloat(pvalue) || 0;
+				}
+			});
+            _.each(_.range(10),function(d){
+                Object.defineProperty(obj.D[d], pname, {
+                    enumerable: true,
+                    set: function(v){
+                        var val=(parseFloat(v) || 0).toFixed(d);
+                        pvalue=val;
+                        prepareUpdate(full_pname,val);
+                    },
+                    get: function(){
+                        return (parseFloat(pvalue) || 0).toFixed(d);
+                    }
+                });
+            });
+
+		}());
+	},
+	
+	repeating = function( section ) {
+		return (function(s){
+			var sectionName = s,
+				attrNames = [],
+				fieldNames = [],
+				operations = [],
+			
+			repAttrs = function(){
+				attrNames = namesFromArgs(arguments,attrNames);
+				return this;
+			},
+			repFields = function(){
+				fieldNames = namesFromArgs(arguments,fieldNames);
+				return this;
+			},
+			repReduce = function(func, initial, final, context) { 
+				operations.push({
+                    type: 'reduce',
+                    func: (func && _.isFunction(func) && func) || _.noop,
+                    memo: (_.isUndefined(initial) && 0) || initial,
+                    final: (final && _.isFunction(final) && final) || _.noop,
+                    context: context || {}
+                });
+				return this;
+			},
+			repMap = function(func, final, context) {
+				operations.push({
+                    type: 'map',
+                    func: (func && _.isFunction(func) && func) || _.noop,
+                    final: (final && _.isFunction(final) && final) || _.noop,
+                    context: context || {}
+                });
+				return this;
+			},
+            repEach = function(func, final, context) {
+				operations.push({
+                    type: 'each',
+                    func: (func && _.isFunction(func) && func) || _.noop,
+                    final: (final && _.isFunction(final) && final) || _.noop,
+                    context: context || {}
+                });
+				return this;
+            },
+            repTap = function(final, context) {
+				operations.push({
+                    type: 'tap',
+                    final: (final && _.isFunction(final) && final) || _.noop,
+                    context: context || {}
+                });
+				return this;
+            },
+			repExecute = function(){
+				var rowSet = {},
+					attrSet = {},
+					fieldIds = [],
+					fullFieldNames = [];
+
+				// call each operation per row.
+				// call each operation's final
+				getSectionIDs("repeating_"+sectionName,function(ids){
+					fieldIds = ids;
+					fullFieldNames = _.reduce(fieldIds,function(memo,id){
+						return memo.concat(_.map(fieldNames,function(name){
+							return 'repeating_'+sectionName+'_'+id+'_'+name;  
+						}));
+					},[]);
+					getAttrs( _.uniq(attrNames.concat(fullFieldNames)), function(values){
+						_.each(attrNames,function(aname){
+							if(values.hasOwnProperty(aname)){
+								addProp(attrSet,aname,values[aname]);
+							}
+						});
+
+						rowSet = _.reduce(fieldIds,function(memo,id){
+							var r={};
+							addId(r,id);
+							_.each(fieldNames,function(name){
+								var fn = 'repeating_'+sectionName+'_'+id+'_'+name;  
+								addProp(r,name,values[fn],fn);
+							});
+
+							memo[id]=r;
+
+							return memo;
+						},{});
+
+                        _.each(operations,function(op){
+                            var res;
+                            switch(op.type){
+                                case 'tap':
+                                    _.bind(op.final,op.context,rowSet,attrSet)();
+                                    break;
+
+                                case 'each':
+                                    _.each(rowSet,function(r){
+                                        _.bind(op.func,op.context,r,attrSet,r.id,rowSet)();
+                                    });
+                                    _.bind(op.final,op.context,rowSet,attrSet)();
+                                    break;
+
+                                case 'map':
+                                    res = _.map(rowSet,function(r){
+                                        return _.bind(op.func,op.context,r,attrSet,r.id,rowSet)();
+                                    });
+                                    _.bind(op.final,op.context,res,rowSet,attrSet)();
+                                    break;
+
+                                case 'reduce':
+                                    res = op.memo;
+                                    _.each(rowSet,function(r){
+                                        res = _.bind(op.func,op.context,res,r,attrSet,r.id,rowSet)();
+                                    });
+                                    _.bind(op.final,op.context,res,rowSet,attrSet)();
+                                    break;
+                            }
+                        });
+
+                        // finalize attrs
+                        applyQueuedUpdates();
+					});
+				});
+			};
+				
+			return {
+				attrs: repAttrs,
+				attr: repAttrs,
+
+				column: repFields,
+				columns: repFields,
+				field: repFields,
+				fields: repFields,
+
+				reduce: repReduce,
+				inject: repReduce,
+				foldl: repReduce,
+
+				map: repMap,
+				collect: repMap,
+
+				each: repEach,
+                forEach: repEach,
+
+                tap: repTap,
+                'do': repTap,
+
+				execute: repExecute,
+				go: repExecute,
+				run: repExecute
+			};
+		}(section));
+	},
+
+
+    repeatingSimpleSum = function(section, field, destination){
+        repeating(section)
+            .attr(destination)
+            .field(field)
+            .reduce(function(m,r){
+                return m + (r.F[field]);
+            },0,function(t,r,a){
+                a[destination]=t;
+            })
+            .execute();
+    };
+
+    console.log('-=> TheAaronSheet v'+version+' <=-  ['+(new Date(lastUpdate*1000))+']');
+
+    return {
+        repeatingSimpleSum: repeatingSimpleSum,
+		repeating: repeating
+    };
+}());
+
+/* ---- END: TheAaronSheet.js ---- */
+
 // ====== PC /NPC Sheet ====== \\
 on("change:level", function() {
 	ArmorUpdate();
@@ -3126,34 +3477,34 @@ on("change:armorworncheck", function() {
 	ArmorUpdate();
 	ArmorPerception();
 });
-on("change:armorprof", function() {
-	ArmorUpdate();
-});
-on("change:armordefense", function() {
-	ArmorUpdate();
-});
-on("change:imparmordefense", function() {
-	ArmorUpdate();
-});
-on("change:armorref", function() {
-	ArmorUpdate();
-});
-on("change:armortype", function() {
+on("change:armorprof change:armordefense change:imparmordefense change:armorref change:armortype change:ArmorDex", function() {
 	ArmorUpdate();
 });
 on("change:armorperception", function() {
 	ArmorPerception();
 });
-on("change:ArmorDex", function() {
-	ArmorUpdate();
-});
-on("change:ArmorWt", function() {
-	
-});
 // ====== Vehicle Sheet ====== \\
 
 on("change:vehicle-size", function() {
 	VehicleSizeUpdate();
+});
+
+// When something in inventory is changed...
+on("change:repeating_equipment",function(){
+    TAS.repeatingSimpleSum('equipment','equipmentwt','equipmentrunningtotal');
+});
+
+on("change:equipmentrunningtotal change:armorwt change:armorcarry",function(){	
+	getAttrs(["ArmorWt","EquipmentRunningTotal", "STR", "ArmorCarry"], function(v) {
+		EquipmentCapacity = parseFloat(v["STR"]/2)*(v["STR"]/2).toFixed(1);
+		if(v["ArmorCarry"] == 1) {TotalWeight = parseFloat(v["ArmorWt"]) + parseFloat(v["EquipmentRunningTotal"]); console.log("=== Armor is Carried ===");}
+		else {TotalWeight = parseFloat(v["EquipmentRunningTotal"]); console.log("=== Armor is NOT Carried ===");}
+		TotalWeight = parseFloat(TotalWeight).toFixed(1)
+		console.log("===== Equipment Weight Totals =====" + '\n' +"EquipmentRunningTotal = " + v["EquipmentRunningTotal"] + '\n' +"TotalWeight = " + TotalWeight + '\n' +"Carry Capacity = " + EquipmentCapacity );
+		setAttrs({"TotalWt": TotalWeight});	
+		if(TotalWeight >= EquipmentCapacity){setAttrs({"EquipmentLoad": -10});	console.log("=== Load is Heavy ===");	}
+		else {setAttrs({"EquipmentLoad": 0});	console.log("=== Load is not heavy ===");}
+	});
 });
 
 // ====== Functions ====== \\
@@ -3185,45 +3536,6 @@ var ArmorPerception = function() {
 		setAttrs({"PerceptionMisc": newPerception, "ArmorPerception_max": perception});
 	});
 };
-// When something in repeating inventory is changed...
-var unique = function (arr) {
-    "use strict";
-
-    var a = [],i,l;
-    for (i=0, l=arr.length; i<l; i++) {
-        if (a.indexOf(arr[i]) === -1 && arr[i] !== '') {
-            a.push(arr[i]);
-        }
-    }
-    return a;
-};
-
-on("change:repeating_equipment",function(){
-    'use strict';
-    // find all the rows' ids
-    setAttrs({
-        'equipmentwt':'...calculating...'
-    });
-    
-    getSectionIDs("repeating_equipment",function(ids){
-        ids = unique(ids.map(function(s){ return (s.toLowerCase && s.toLowerCase());}));
-        // get all of those rows' weight fields
-        getAttrs( ids.map(function(i){
-            return 'repeating_equipment_'+i+'_equipmentwt';  //< this builds the name from the list of ids
-        }),function(weights){
-            // Then set the total_weight attribute
-            var sum = 0,p;
-            for(p in weights) {
-                if(weights.hasOwnProperty(p)){
-                   sum += parseFloat(weights[p]) || 0;
-                }
-            }
-            setAttrs({
-                "equipmentwt": sum
-            });
-        });
-    });
-});
 
 var ArmorUpdate = function() {
 	getAttrs(["ArmorWornCheck", "ArmorDefense", "ImpArmorDefense", "ArmorProf", "ArmorRef", "level", "ArmorType", "ArmorDex", "DEX", "RefMod"], function(v) {
@@ -3238,7 +3550,8 @@ var ArmorUpdate = function() {
 	ImpArmorDefense = parseInt(v["level"]) + Math.floor(parseInt(v["ArmorRef"]/ 2))
 	if (v["ArmorProf"] == "0") {setAttrs({"ArmorDefense": "0", "ImpArmorDefense": "0" });}
 	
-	if(v["ArmorWornCheck"] == "1") { //If Armor is being Worn
+	if(v["ArmorWornCheck"] == "1") { //If Armor is being Worn	
+		setAttrs({"ArmorCarry": "1"}); // Armor is Carried
 		if(v["ArmorProf"] == "1") { //if Proficient
 			armorFortitude = "@{level}+@{ArmorFort}"
 			armorPenalty = "0";
@@ -3281,6 +3594,7 @@ var ArmorUpdate = function() {
 			console.log("==== Not Wearing Armor ====");
 			armorReflex = "@{level}";
 			armorFortitude = "@{level}"
+			setAttrs({"ArmorCarry": "0"}); //Armor is not Carried
 		}
 
 	console.log("armorReflex = " + armorReflex + '\n' + "armorFortitude = " + armorFortitude + '\narmorPenalty = ' + armorPenalty );
